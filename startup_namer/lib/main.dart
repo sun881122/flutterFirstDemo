@@ -3,7 +3,8 @@ import 'package:english_words/english_words.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-
+import 'Text.dart';
+import 'Btn.dart';
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
@@ -82,6 +83,16 @@ class RandomWordState extends State<RandomWords>{
       ),
     );
   }
+  void _pushNewWidget(){
+    Navigator.of(context).push(
+      MaterialPageRoute(
+        builder: (context){
+          // return TestA(); //文本
+          return BtnWidget();//按钮
+        }
+       )
+    );
+  }
   @override
   Widget build(context){
     return Scaffold(
@@ -96,6 +107,7 @@ class RandomWordState extends State<RandomWords>{
             ),
           ],
       ),
+      floatingActionButton: IconButton(icon: Icon(Icons.filter_tilt_shift),iconSize: 40,onPressed:_pushNewWidget ,),
       body: _buildSession(),
     );
   }
